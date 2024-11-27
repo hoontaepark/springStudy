@@ -26,12 +26,14 @@ public class Member {
 
     private String email;
 
+    private String uuid;
     @Builder
-    public Member(String id, String password, String name, String email) {
+    public Member(String id, String password, String name, String email, String uuid) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.email = email;
+        this.uuid = uuid;
     }
 
 }

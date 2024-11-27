@@ -3,9 +3,9 @@ spring:
     name: springStudy
 
   datasource:
-    url: ${springStudyDB}
-    username: ${dbuserName}
-    password: ${dbpassword}
+    url: ${STUDY_DB}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -17,3 +17,7 @@ spring:
 
 server:
   port: 8080
+
+#Token
+JWT:
+  SECRET_KEY: ${SECRECT}
