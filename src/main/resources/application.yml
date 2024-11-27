@@ -5,12 +5,11 @@ spring:
   datasource:
     url: ${springStudyDB}
     username: ${dbuserName}
-    password: ${dbuserPassword}
+    password: ${dbpassword}
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
