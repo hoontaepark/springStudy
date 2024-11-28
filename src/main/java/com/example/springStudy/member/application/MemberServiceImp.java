@@ -4,6 +4,7 @@ import com.example.springStudy.global.common.exception.CustomException;
 import com.example.springStudy.global.common.response.BaseResponseCode;
 import com.example.springStudy.member.domain.Member;
 import com.example.springStudy.member.infrastructure.MemberRepository;
+import com.example.springStudy.member.vo.IdCheckVo;
 import com.example.springStudy.member.vo.SignUpVo;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -28,8 +29,8 @@ public class MemberServiceImp {
         UUID uuid = UUID.randomUUID();
         String uuidString = uuid.toString();
 
-        if (memberRepository.existsByName(signUpVo.getName())){
-            throw new CustomException(BaseResponseCode.EXIST_NAME);
+        if (memberRepository.existsById(signUpVo.getId())){
+            throw new CustomException(BaseResponseCode.EXIST_ID);
         }else if (memberRepository.existsByEmail(signUpVo.getEmail())){
             throw new CustomException(BaseResponseCode.EXIST_EMAIL);
         }
@@ -42,6 +43,13 @@ public class MemberServiceImp {
                 .build();
         memberRepository.save(member);
 
+
+    }
+
+    public void idCheck(IdCheckVo idCheckVo){
+        if (!memberRepository.existsById(idCheckVo.getId())){
+            throw new CustomException(BaseResponseCode.EXIST_ID);
+        }
 
     }
 

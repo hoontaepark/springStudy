@@ -13,7 +13,7 @@ public enum BaseResponseCode {
     //Test
     TEST_ERROR(HttpStatus.BAD_REQUEST, false, 1234, "Test용 Error Message 입니다"),
     //SignUp
-    EXIST_NAME(HttpStatus.BAD_REQUEST, false, 1000, "이미 등록된 이름입니다."),
+    EXIST_ID(HttpStatus.BAD_REQUEST, false, 1000, "이미 등록된 Id입니다."),
     WRONG_NAME_PHONE_NUMBER(HttpStatus.BAD_REQUEST, false, 1001, "이름, 전화번호가 일치하지 않습니다"),
     WRONG_PASSWORD(HttpStatus.BAD_REQUEST, false, 1002, "찾을수 없는 회원정보"),
     SIGNIN_FAILED(HttpStatus.BAD_REQUEST, false, 1003, "로그인 실패"),
