@@ -4,10 +4,10 @@ import com.example.springStudy.global.common.exception.CustomException;
 import com.example.springStudy.global.common.response.BaseResponseCode;
 import com.example.springStudy.member.domain.Member;
 import com.example.springStudy.member.infrastructure.MemberRepository;
+import com.example.springStudy.member.vo.EmailCheckVo;
 import com.example.springStudy.member.vo.IdCheckVo;
 import com.example.springStudy.member.vo.SignUpVo;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
-public class MemberServiceImp {
+public class MemberServiceImp implements MemberService {
 
     private final MemberRepository memberRepository;
 
@@ -24,6 +24,9 @@ public class MemberServiceImp {
         return Password;
     }
 
+
+    @Override
+    @Transactional
     public void singUp(SignUpVo signUpVo){
 
         UUID uuid = UUID.randomUUID();
@@ -46,11 +49,19 @@ public class MemberServiceImp {
 
     }
 
+    @Override
     public void idCheck(IdCheckVo idCheckVo){
         if (!memberRepository.existsById(idCheckVo.getId())){
             throw new CustomException(BaseResponseCode.EXIST_ID);
         }
 
+    }
+
+    @Override
+    public void emailCheck(EmailCheckVo emailCheckVo) {
+        if (!memberRepository.existsByEmail(emailCheckVo.getEmail())) {
+            throw new CustomException(BaseResponseCode.EXIST_EMAIL);
+        }
     }
 
 }

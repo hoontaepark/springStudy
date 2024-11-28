@@ -3,6 +3,7 @@ package com.example.springStudy.member.presentation;
 
 import com.example.springStudy.global.common.response.BaseResponse;
 import com.example.springStudy.member.application.MemberServiceImp;
+import com.example.springStudy.member.vo.EmailCheckVo;
 import com.example.springStudy.member.vo.IdCheckVo;
 import com.example.springStudy.member.vo.SignUpVo;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,12 @@ public class MemberController {
     public BaseResponse<Void> idCheck(@RequestBody IdCheckVo idCheckVo){
 
         memberServiceImp.idCheck(idCheckVo);
+        return new BaseResponse<>();
+    }
+
+    @PostMapping("/springstody/member/emailCheck")
+    public BaseResponse<Void> emailCheck(@RequestBody EmailCheckVo emailCheckVo){
+
         return new BaseResponse<>();
     }
 
