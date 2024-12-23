@@ -1,6 +1,5 @@
 package com.example.springStudy.member.service;
 
-import static jdk.internal.org.objectweb.asm.util.CheckClassAdapter.verify;
 import static org.mockito.Mockito.when;
 
 import com.example.springStudy.member.application.MemberServiceImp;
